@@ -35,10 +35,12 @@ exports.createBlog = async (req, res) => {
 
 exports.updateBlog = async (req, res) => {
     try {
+        console.log(req.body);
         const blogId = req.params.id;
-        const data = await listBlogModel.updateOne({ _id: blogId }, {
+        const data = await listBlogModel.findOneAndUpdate({ _id: blogId }, {
             title: req.body.title,
-            content: req.body.content
+            content: req.body.content,
+            tag:req.body.tag
         });
 
         if (!data) {
