@@ -117,3 +117,70 @@ body {
 .cart .btn-delete-cart:hover {
     color: gray;
 }
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    body {
+        padding: 5% 10%;
+        flex-direction: column;
+    }
+
+    .left-container {
+        display: flex;
+        width: 100%;
+    }
+
+    .left-container .left-container-header {
+        margin-right: 10px;
+        height: 200px;
+        width: 73%;
+    }
+
+
+    .left-container .left-container-header .left-container-content h2 {
+        font-size: 20px !important;
+    }
+
+    .left-container .left-container-body {
+        margin-bottom: 15px;
+        width: 25%;
+    }
+
+    .right-container {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    body {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .left-container {
+        width: 100%;
+    }
+
+    .left-container .left-container-header {
+        width: 100%;
+        border-radius: 0px;
+        margin: 0;
+    }
+
+    .left-container .left-container-body {
+        display: none;
+    }
+
+    .right-container {
+        width: 100%;
+    }
+
+    .right-container .header {
+        border-radius: 0px;
+    }
+
+    .right-container .body {
+        padding: 10px 20px;
+    }
+
+}
+  

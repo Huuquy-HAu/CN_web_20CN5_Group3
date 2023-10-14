@@ -1,0 +1,144 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0 5px;
+}
+
+.banner img {
+    width: 100%;
+}
+
+.header {
+    display: flex;
+}
+
+.header div {
+    padding: 12px 24px;
+}
+
+.content-header {
+    color: blue;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.member {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: center;
+    padding: 8px 16px;
+    
+}
+
+.member-nav {
+    width: 23%;
+    padding: 12px 0;
+}
+
+.member-nav img {
+    width: 100%;
+}
+
+.activate-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+.activate-header {
+    color: blue;
+    text-align: center;
+    text-decoration: underline;
+    margin: 20px 0;
+}
+
+
+.activate-member {
+    width: 30%;
+    border: 1px solid gray;
+    margin: 12px;
+}
+
+.activate-member h5 {
+    text-align: center;
+}
+
+.activate-member img {
+    width: 100%;
+}
+
+
+.activate-btn {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 40px;
+}
+
+.activate-btn a {
+    color: gray;
+}
+
+.activate-btn div {
+    font-weight: bold;
+    color: red;
+}
+
+
+.footer {
+    background-color: gainsboro;
+    font-style: italic;
+    padding: 12px 24px;
+}
+
+.footer small {
+    margin: auto;
+    color: gray;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.ex2 {
+    text-align: center;
+}
+
+.ex2 h2 {
+    text-transform: uppercase;
+}
+
+.ex2 .action button {
+    padding: 8px 12px;
+    margin: 10px;
+    border: none;
+    background-color: #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.ex2 .action button:hover {
+    background-color: gray;
+}
+
+.fade-out {
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+.hidden {
+    opacity: 0;
+}
+
+.fade-in {
+    transition: opacity 1s ease-in-out;
+}
+
+

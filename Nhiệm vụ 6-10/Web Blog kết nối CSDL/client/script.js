@@ -205,6 +205,7 @@ const updateBlog = async (id, title, content, tag) => {
       const data = await response.json();
       console.log("Cập nhật blog thành công:", data);
       getAlBlog()
+      alert("Sửa Blog thành công") 
 
       // ...
   } else {
