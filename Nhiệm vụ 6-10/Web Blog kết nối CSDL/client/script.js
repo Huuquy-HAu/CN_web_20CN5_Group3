@@ -1,10 +1,15 @@
-let apiUrl = "http://localhost:4000";
-let leftContainer = document.querySelector(".right-container-left-header");
-let inpTitleCreate = document.querySelector(".inp-creat-blog-title");
-let inpContentCreate = document.querySelector(".inp-creat-blog-content");
-let inpTagCreate = document.querySelector(".inp-creat-blog-tag");
-let btnCreateBlog = document.querySelector(".btn-create-blog");
-let btnCloseModal = document.querySelector(".btn-close-modall");
+const apiUrl = "http://localhost:4000";
+const leftContainer = document.querySelector(".right-container-left-header");
+const inpTitleCreate = document.querySelector(".inp-creat-blog-title");
+const inpContentCreate = document.querySelector(".inp-creat-blog-content");
+const inpTagCreate = document.querySelector(".inp-creat-blog-tag");
+const btnCreateBlog = document.querySelector(".btn-create-blog");
+const btnCloseModal = document.querySelector(".btn-close-modall");
+const btnFilterAll = document.querySelector('.btn-filter-all'); 
+const btnFilterFeature = document.querySelector('.btn-filter-feature');
+const btnFilterBug = document.querySelector('.btn-filter-bug');
+const btnFilterLife = document.querySelector('.btn-filter-life');
+
 
 let timeClock = setInterval(() => {
   let dateTime = new Date();
@@ -35,17 +40,124 @@ const createBlog = async (title, content, tag) => {
   }
 };
 
-const getAlBlog = async () => {
+const getAlBlog = async (query) => {
   const response = await fetch(`${apiUrl}/blog`);
+  console.log(query);
 
   if (response.status === 200) {
     const data = await response.json();
     console.log("Lấy tất cả blog thành công:", data);
 
+    if(query){
+      const ListBlog = data?.map((value, index) => {
+        if(query == value.tag){
+          return `<div class="cart" data-id="${value._id}">
+                  <div class="cart-left">
+                  <div class="cart-title">${value.title} 
+                  <button type="button" class="btn ${value.tag == 'Feature'? 'btn-outline-primary': 'btn-outline-danger' }">${value.tag}</button>
+                  </div>
+                  <div class="cart-content">${value.content}</div>
+                  </div>
+      
+                  <div class="cart-right">
+                  <i 
+                    class="fa-solid fa-pen" 
+                    data-bs-toggle="modal"
+                    data-bs-target="#id_${value._id}"
+                  ></i>
+                  <button 
+                    class = "btn-delete-cart"
+                    data-id="${value._id}"
+                    onclick = "handleDeleteBlog('${value._id}')"
+                  >
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                  </div>
+  
+  
+                  <div
+                    class="modal fade"
+                    id="id_${value._id}"
+                    data-bs-backdrop="static"
+                    data-bs-keyboard="false"
+                    tabindex="-1"
+                    aria-labelledby="staticBackdropLabel"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog modal-dialog-centered text-dark">
+                      <div class="modal-content">
+                        <div class="modal-header border-0">
+                          <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                            Sửa Blog
+                          </h1>
+                          <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          ></button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="form-floating mb-3">
+                            <input
+                              type="text"
+                              class="form-control inp-creat-blog-title${value._id}"
+                              id="floatingInput"
+                              placeholder="Tiêu đề"
+                              value="${value.title}"
+                            />
+                            <label for="floatingInput">Tiêu đề</label>
+                          </div>
+  
+                          <div class="form-floating mb-3">
+                            <input
+                              type="text"
+                              class="form-control inp-creat-blog-content${value._id}"
+                              id="floatingInput"
+                              placeholder="Nội dung"
+                              value="${value.content}"
+                            />
+                            <label for="floatingInput">Nội dung</label>
+                          </div>
+  
+                          <select
+                            class="form-select font-weight-bold inp-creat-blog-tag${value._id}"
+                            aria-label="Default select example"
+                            value="${value.tag}"
+                          >
+                            <option value="">Thêm Tag</option>
+                            <option value="Feature" ${value.tag == "Feature" ? "selected" : ""}>Feature</option>
+                            <option value="Bug" ${value.tag == "Bug" ? "selected" : ""}>Bug</option>
+                            <option value="Life" ${value.tag == "Life" ? "selected" : ""}>Life</option>
+                          </select>
+                        </div>
+                        <div class="modal-footer border-0">
+                          <button
+                            type="button"
+                            class="btn btn-secondary btn-close-modall"
+                            data-bs-dismiss="modal"
+                          >
+                            Đóng
+                          </button>
+                          <button type="button" class="btn btn-primary btn-create-blog" data-bs-dismiss="modal" onclick="handleUpdateBlog('${value._id}')">Thêm</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+  
+              </div>`;
+        }
+      });
+      document.querySelector(".body").innerHTML = ListBlog.join("");
+      return;
+    }
+
     const ListBlog = data?.map((value, index) => {
       return `<div class="cart" data-id="${value._id}">
                 <div class="cart-left">
-                <div class="cart-title">${value.title}</div>
+                <div class="cart-title">${value.title} 
+                <button type="button" class="btn ${value.tag == 'Feature'? 'btn-outline-primary': 'btn-outline-danger' }">${value.tag}</button>
+                </div>
                 <div class="cart-content">${value.content}</div>
                 </div>
     
@@ -225,3 +337,19 @@ const handleUpdateBlog = (id) => {
   updateBlog(id, inpTitleCreatee.value, inpContentCreatee.value, inpTagCreatee.value)
 
 }
+
+btnFilterAll.addEventListener("click", () => {
+  getAlBlog()
+})
+
+btnFilterFeature.addEventListener("click", () => {
+  getAlBlog("Feature")
+})
+
+btnFilterBug.addEventListener("click", () => {
+  getAlBlog("Bug")
+})
+
+btnFilterLife.addEventListener("click", () => {
+  getAlBlog("Life")
+})
