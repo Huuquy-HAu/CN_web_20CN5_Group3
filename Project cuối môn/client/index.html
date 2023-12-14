@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Blog - Nhóm 3 - 20CN5</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://tinchi.hau.edu.vn/FileManager/img/WebsiteTemplateIcon.PNG"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;1,300;1,500&family=Quicksand:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="left-container">
+      <div class="left-container-header">
+        <div class="left-container-content">
+          <h2 style="font-size: 25px">Blog cá nhân</h2>
+          <p>Nhóm 3</p>
+        </div>
+      </div>
+      <div class="left-container-body">
+        <div class="btn-filter btn-filter-all">All</div>
+        <div class="btn-filter btn-filter-feature">Feature</div>
+        <div class="btn-filter btn-filter-bug">Bug</div>
+        <div class="btn-filter btn-filter-life">Life</div>
+      </div>
+      <div class="footer"></div>
+    </div>
+    <div class="right-container">
+      <div class="header">
+        <div class="right-container-left-header"></div>
+        <div class="right-container-right-header">
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+          >
+            Add New
+          </button>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="staticBackdrop"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered text-dark">
+              <div class="modal-content">
+                <div class="modal-header border-0">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                    Thêm Blog
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <div class="form-floating mb-3">
+                    <input
+                      type="text"
+                      class="form-control inp-creat-blog-title"
+                      id="floatingInput"
+                      placeholder="Tiêu đề"
+                    />
+                    <label for="floatingInput">Tiêu đề</label>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <input
+                      type="text"
+                      class="form-control inp-creat-blog-content"
+                      id="floatingInput"
+                      placeholder="Nội dung"
+                    />
+                    <label for="floatingInput">Nội dung</label>
+                  </div>
+
+                  <select
+                    class="form-select font-weight-bold inp-creat-blog-tag"
+                    aria-label="Default select example"
+                    value = "Feature"
+                  >
+                    <option value="">Thêm Tag</option>
+                    <option value="Feature">Feature</option>
+                    <option value="Bug">Bug</option>
+                    <option value="Life">Life</option>
+                  </select>
+                </div>
+                <div class="modal-footer border-0">
+                  <button
+                    type="button"
+                    class="btn btn-secondary btn-close-modall"
+                    data-bs-dismiss="modal"
+                  >
+                    Đóng
+                  </button>
+                  <button type="button" class="btn btn-primary btn-create-blog" data-bs-dismiss="modal">Thêm</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="body">
+        
+      </div>
+    </div>
+
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"
+  ></script>
+  <script src="./script.js"></script>
+</html>
